@@ -3,11 +3,13 @@ package service;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultWindowService implements WindowService {
 
     private final FileHandlerImp fileHandlerImp = new FileHandlerImp();
+    private final Crypton crypton = new Crypton();
 
     @Override
     public JFrame draw(String args) {
@@ -20,13 +22,13 @@ public class DefaultWindowService implements WindowService {
         JTextArea textArea = new JTextArea(40, 30);
         frame.add(textArea);
 
-        JButton buttonFillGps = new JButton("Load db");
-        buttonFillGps.addActionListener(e -> loadDb(textArea,args));
-        frame.add(buttonFillGps);
+        JButton loadDb = new JButton("Load db");
+        loadDb.addActionListener(e -> loadDb(textArea,args));
+        frame.add(loadDb);
 
-        JButton buttonDelete = new JButton("Delete GPS");
-        //buttonDelete.addActionListener();
-        frame.add(buttonDelete);
+        JButton cryptToDb = new JButton("Crypt and save to db");
+        cryptToDb.addActionListener(e -> cryptToDb(textArea));
+        frame.add(cryptToDb);
 
         JButton buttonClearMemory = new JButton("CLR Mem");
         //buttonClearMemory.addActionListener();
@@ -37,8 +39,10 @@ public class DefaultWindowService implements WindowService {
 
         return frame;
     }
-    private void load() {
-
+    private void cryptToDb(JTextArea textArea) {
+        List<String> list = new ArrayList<>();
+        list.add(textArea.getText().);
+        System.out.println("prdel");
     }
 
     private void loadDb(JTextArea textArea, String args) {
